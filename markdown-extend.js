@@ -113,7 +113,7 @@ marked.setOptions({
         breaks: true,
         smartLists: true,
         smartypants: true,
-        modifyAnchors: '',
+        modifyAnchors: 1,
         autolink: true,
         langPrefix: '',
         highlight: function(code, lang) {
