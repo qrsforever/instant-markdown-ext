@@ -10,7 +10,7 @@ var MarkedRenderer = marked.Renderer;
 
 function Renderer() {
     MarkedRenderer.apply(this);
-    this._headingId = {};
+    // this._headingId = {};
 }
 
 require('util').inherits(Renderer, MarkedRenderer);
@@ -56,15 +56,15 @@ Renderer.prototype.listitem = function(text) {
 Renderer.prototype.heading = function(text, level) {
     var transformOption = this.options.modifyAnchors;
     var id = anchorId(stripHTML(text), transformOption);
-    var headingId = this._headingId;
+    // var headingId = this._headingId;
 
-    // Add a number after id if repeated
-    if (headingId[id]) {
-        id += '-' + headingId[id]++;
-    } else {
-        headingId[id] = 1;
-    }
-    // add headerlink
+    // //Add a number after id if repeated
+    // if (headingId[id]) {
+    //     id += '-' + headingId[id]++;
+    // } else {
+    //     headingId[id] = 1;
+    // }
+    // // add headerlink
     return '<h' + level + ' id="' + id + '"><a href="#' + id + '" class="headerlink" title="' + stripHTML(text) + '"></a>' + text + '</h' + level + '>';
 };
 
