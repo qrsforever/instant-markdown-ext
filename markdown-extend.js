@@ -15,8 +15,18 @@ function Renderer() {
 
 require('util').inherits(Renderer, MarkedRenderer);
 
-function highlightUtil(str, lang, wrap) {
+function highlightUtil(str, lang) {
+    var wrap = true;
+    if (lang) {
+        var values = lang.split(':');
+        if (values.length > 1) {
+            lang = values[0];
+            if (values[1] != '+')
+                wrap = false;
+        }
+    }
     var data = hljs.highlightAuto(stripIndent(str), [lang]);
+
     if (!wrap) 
         return data.value;
 
@@ -117,7 +127,7 @@ marked.setOptions({
         autolink: true,
         langPrefix: '',
         highlight: function(code, lang) {
-            return highlightUtil(code, lang, true);
+            return highlightUtil(code, lang);
         }
 });
 

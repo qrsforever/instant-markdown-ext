@@ -17,7 +17,7 @@
 第一章
 -----
 代码显示行
-```
+```c:-
 #include <stdio.h>
 
 int main(int argc, char** argv)
